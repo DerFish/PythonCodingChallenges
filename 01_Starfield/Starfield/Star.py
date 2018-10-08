@@ -1,32 +1,32 @@
-class Star:
+class Star():
     x = 0
     y = 0
     z = 0
     pz = 0
 
-def __init__(self):
-    x = random(-width/2, width/2)
-    y = random(-height/2, height/2)
-    z = random(width/2)
-    pz = z
+    def __init__(self):
+        self.x = random(-width/2, width/2)
+        self.y = random(-height/2, height/2)
+        self.z = random(width/2)
+        self.pz = self.z
 
-def update():
-    z = z - speed
-    if (z < 1):
-      z = width/2
-      x = random(-width/2, width/2)
-      y = random(-height/2, height/2)
-      pz = z
-
-def show():
-    fill(255)
-    noStroke()
-    float sx = map(x / z, 0, 1, 0, width/2)
-    float sy = map(y / z, 0, 1, 0, height/2)
-    float r = map(z, 0, width/2, 16, 0)
-    ellipse(sx, sy, r, r)
-    float px = map(x / pz, 0, 1, 0, width/2)
-    float py = map(y / pz, 0, 1, 0, height/2)
-    pz = z
-    stroke(255)
-    line(px, py, sx, sy)
+    def update(self):
+        self.z = self.z - 10
+        if (self.z < 1):
+            self.z = width/2
+            self.x = random(-width/2, width/2)
+            self.y = random(-height/2, height/2)
+            self.pz = self.z
+    
+    def show(self):
+        fill(255)
+        noStroke()
+        sx = map(self.x / self.z, 0, 1, 0, width/2)
+        sy = map(self.y / self.z, 0, 1, 0, height/2)
+        r = map(self.z, 0, width/2, 16, 0)
+        ellipse(sx, sy, r, r)
+        px = map(self.x / self.pz, 0, 1, 0, width/2)
+        py = map(self.y / self.pz, 0, 1, 0, height/2)
+        self.pz = self.z
+        stroke(255)
+        line(px, py, sx, sy)
